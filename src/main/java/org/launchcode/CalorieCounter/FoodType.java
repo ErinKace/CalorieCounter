@@ -1,29 +1,25 @@
 package org.launchcode.CalorieCounter;
 
-public class Ingredient implements CalorieConversion {
+public class FoodType implements CalorieConversion {
     private String name;
-    private double quantityInOunces;
+    private String brandName = "Unknown";
     private double quantityInGrams;
-    private double caloriesPerOunce;
     private double caloriesPerGram;
-    private double proteinPerGram;
-    private double sugarPerGram;
-    private double fatPerGram;
-    private double fiberPerGram;
+    private double proteinPerGram=0;
+    private double sugarPerGram=0;
+    private double fatPerGram=0;
+    private double fiberPerGram=0;
 
-    public Ingredient(String name, double quantity, String quantityType, double calories) {
+    public FoodType(String name, double quantity, String quantityType, double calories) {
         this.name = name;
         if (quantityType.equals("g")) {
             this.quantityInGrams = quantity;
-            this.quantityInOunces = CalorieConversion.convertGramsToOunces(quantity);
         } else if (quantityType.equals("oz")) {
-            this.quantityInOunces = quantity;
             this.quantityInGrams = CalorieConversion.convertOuncesToGrams(quantity);
         }
         this.caloriesPerGram = calories/quantityInGrams;
-        this.caloriesPerOunce = calories/quantityInOunces;
     }
-    public Ingredient(String name, double quantity, String quantityType, double calories, double protein, double sugar, double fat, double fiber) {
+    public FoodType(String name, double quantity, String quantityType, double calories, double protein, double sugar, double fat, double fiber) {
         this(name, quantity, quantityType, calories);
         this.proteinPerGram = protein/quantityInGrams;
         this.sugarPerGram = sugar/quantityInGrams;
@@ -33,25 +29,18 @@ public class Ingredient implements CalorieConversion {
 
     @Override
     public double getCaloriesPerGram() {
-        return quantityInGrams*caloriesPerGram;
+        return caloriesPerGram;
     }
 
     @Override
     public double getCaloriesPerOunce() {
-        return quantityInOunces*caloriesPerOunce;
+        return CalorieConversion.convertGramsToOunces(getCaloriesPerGram());
     }
 
     public String getName() {
         return name;
     }
 
-    public double getQuantityInOunces() {
-        return quantityInOunces;
-    }
-
-    public double getQuantityInGrams() {
-        return quantityInGrams;
-    }
 
     public double getProteinPerGram() {
         return proteinPerGram;
