@@ -1,45 +1,45 @@
 package org.launchcode.CalorieCounter;
 
 public class Food extends FoodStuff {
-    FoodType foodType;
+    Ingredient ingredient;
     Food(String name, double quantity, double calories) {
 
     }
-    Food(String name, double quantity, FoodType foodType) {
+    Food(String name, double quantity, Ingredient ingredient) {
         super(name, quantity);
-        this.foodType = foodType;
+        this.ingredient = ingredient;
     }
 
     @Override
     public double getCalories() {
-        return getQuantityInGrams() * foodType.getCaloriesPerGram();
+        return getQuantityInGrams() * ingredient.getCaloriesPerGram();
     }
 
     @Override
     public double getProtein() {
-        return getQuantityInGrams() * foodType.getProteinPerGram();
+        return getQuantityInGrams() * ingredient.getProteinPerGram();
     }
 
     @Override
     public double getFiber() {
-        return getQuantityInGrams() * foodType.getFiberPerGram();
+        return getQuantityInGrams() * ingredient.getFiberPerGram();
     }
 
     @Override
     public double getFat() {
-        return getQuantityInGrams() * foodType.getFatPerGram();
+        return getQuantityInGrams() * ingredient.getFatPerGram();
     }
 
     @Override
     public double getSugar() {
-        return getQuantityInGrams() * foodType.getSugarPerGram();
+        return getQuantityInGrams() * ingredient.getSugarPerGram();
     }
 
-    public FoodType getFoodType() {
-        return foodType;
+    public Ingredient getFoodType() {
+        return ingredient;
     }
 
-    public void setFoodType(FoodType foodType) {
-        this.foodType = foodType;
+    public void setFoodType(Ingredient ingredient) {
+        this.ingredient = ingredient;
     }
 }

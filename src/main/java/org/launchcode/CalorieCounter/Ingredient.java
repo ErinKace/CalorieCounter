@@ -1,6 +1,6 @@
 package org.launchcode.CalorieCounter;
 
-public class FoodType implements CalorieConversion {
+public class Ingredient {
     private String name;
     private String brandName = "Unknown";
     private double quantityInGrams;
@@ -9,17 +9,19 @@ public class FoodType implements CalorieConversion {
     private double sugarPerGram=0;
     private double fatPerGram=0;
     private double fiberPerGram=0;
+    private MeasurementConvertor measurementConvertor;
 
-    public FoodType(String name, double quantity, String quantityType, double calories) {
+    public Ingredient(String name, double quantity, String quantityType, double calories) {
         this.name = name;
+        this.measurementConvertor = new MeasurementConvertor();
         if (quantityType.equals("g")) {
             this.quantityInGrams = quantity;
-        } else if (quantityType.equals("oz")) {
-            this.quantityInGrams = CalorieConversion.convertOuncesToGrams(quantity);
+        } else  {
+            this.quantityInGrams = measurementConvertor.convertMeasurement(quantity,quantityType, "grams");
         }
         this.caloriesPerGram = calories/quantityInGrams;
     }
-    public FoodType(String name, double quantity, String quantityType, double calories, double protein, double sugar, double fat, double fiber) {
+    public Ingredient(String name, double quantity, String quantityType, double calories, double protein, double sugar, double fat, double fiber) {
         this(name, quantity, quantityType, calories);
         this.proteinPerGram = protein/quantityInGrams;
         this.sugarPerGram = sugar/quantityInGrams;
@@ -27,12 +29,11 @@ public class FoodType implements CalorieConversion {
         this.fatPerGram = fat/quantityInGrams;
     }
 
-    @Override
     public double getCaloriesPerGram() {
         return caloriesPerGram;
     }
 
-    @Override
+
     public double getCaloriesPerOunce() {
         return CalorieConversion.convertGramsToOunces(getCaloriesPerGram());
     }

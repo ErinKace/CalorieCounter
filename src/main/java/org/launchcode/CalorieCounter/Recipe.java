@@ -2,7 +2,7 @@ package org.launchcode.CalorieCounter;
 
 import java.util.ArrayList;
 
-public class Recipe extends FoodType {
+public class Recipe extends Ingredient {
     ArrayList<Food> ingredientList;
     double servingsPerRecipe;
     Recipe(String name, double servingsPerRecipe) {
