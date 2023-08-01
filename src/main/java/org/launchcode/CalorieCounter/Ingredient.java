@@ -3,6 +3,9 @@ package org.launchcode.CalorieCounter;
 public class Ingredient {
     private String name;
     private String brandName = "Unknown";
+    private String servingUnit;
+    private double servingSize;
+    private double gramsPerServing;
     private double quantityInGrams;
     private double caloriesPerGram;
     private double proteinPerGram=0;
@@ -57,5 +60,49 @@ public class Ingredient {
 
     public double getFiberPerGram() {
         return fiberPerGram;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public void setServingUnit(String servingUnit) {
+        this.servingUnit = servingUnit;
+    }
+
+    public void setServingSize(double servingSize) {
+        this.servingSize = servingSize;
+    }
+
+    public void setGramsPerServing(double gramsPerServing) {
+        this.gramsPerServing = gramsPerServing;
+    }
+
+    public void setQuantityInGrams(double quantityInGrams) {
+        this.quantityInGrams = quantityInGrams;
+    }
+
+    public void setCaloriesPerGram(double caloriesPerGram) {
+        this.caloriesPerGram = caloriesPerGram;
+    }
+
+    public void setProteinPerGram(double proteinPerGram) {
+        this.proteinPerGram = proteinPerGram;
+    }
+
+    public void setSugarPerGram(double sugarPerGram) {
+        this.sugarPerGram = sugarPerGram;
+    }
+
+    public void setFatPerGram(double fatPerGram) {
+        this.fatPerGram = fatPerGram;
+    }
+
+    public void setFiberPerGram(double fiberPerGram) {
+        this.fiberPerGram = fiberPerGram;
     }
 }
